@@ -1,30 +1,29 @@
 ---
 layout: post
-title:  "My first post!"
-date:   2020-10-18 11:07:43 -0700
-categories: 
+title:  "Python Convert .mp4 to .mp3"
+date:   2020-11-01 15:00:00 -0700
+categories: python
 ---
-I just made this post
+Simple python project to convert a .mp4 file to a .mp3 file. This function now runs as a CLI tool using the click library. 
 
 {% highlight ruby %}
-import cmath
-
-a = 1
-b = 5
-c = 6
-
-# calculate the discriminant
-d = (b**2) - (4*a*c)
-
-# find two solutions
-sol1 = (-b-cmath.sqrt(d))/(2*a)
-sol2 = (-b+cmath.sqrt(d))/(2*a)
-
-print('The solution are {0} and {1}'.format(sol1,sol2))
+@click.command()
+@click.option('-d', is_flag=True, help='delete .mp4 after converting to .mp3')
+@click.option('-p', required=True, help='path of files to convert')
+def convert_video_to_audio(d, p):
+	logging.basicConfig(filename='/mnt/cloud/code/python/convert/logfile.log', level=logging.INFO)
+	logging.info(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Starting new audio conversion")
+	for filename in os.listdir(p):
+		if os.path.splitext(filename)[1] == '.mp4':
+			try:
+				logging.info(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Converting {filename}")
+				clip = mp.VideoFileClip(filename)
+				clip.audio.write_audiofile(f"{os.path.splitext(filename)[0]}.mp3")
+				if d:
+					logging.info(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Removing {filename}")
+					os.remove(filename)
+			except KeyError as ke:
+				logging.error(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Exception: {str(ke)}")
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
