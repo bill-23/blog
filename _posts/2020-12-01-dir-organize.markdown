@@ -28,10 +28,10 @@ The main function is designed to be a cli function utilizing the `click` library
 ```
 ---
 The function then iterates over the directory and does the following for each item in the directory:
-..* Gets the items path
-..* Gets the items file type
-..* Chooses the correct directory type to make
-..* Makes that new directory
-..* Moves the file into that new directory
+* Gets the items path
+* Gets the items file type
+* Chooses the correct directory type to make
+* Makes that new directory
+* Moves the file into that new directory
 ---
 
