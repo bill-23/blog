@@ -4,6 +4,10 @@ title:  "CrabApp"
 date:   2018-01-01 15:00:00 -0700
 categories: android
 ---
+<p align="center">
+  <img src="https://github.com/bill-23/blog/blob/gh-pages/Images/PickUpGIF.gif?raw=true" alt="Picking up the buoy GIF"/>
+</p>
+
 ### Introduction
 Recreational crabbing is a popular activity among fishermen. According to the 2011 census 33.1 million people aged 16 and up participated in fishing with 1.7 million licensed fishermen in California alone. The popularity of this sport resulted in 41.8 billion dollars spent on fishing in 2011 of which 15.5 million dollars was spent on fishing gear. 
 
@@ -14,13 +18,31 @@ CrabApp is vital to environmental conservation efforts by providing a user-frien
 ### Design
 There are two main parts to CrabApp, the physical buoy housing and the Android application. The housing ataches to a standard 12" moring buoy. 
 
-### Buoy Housing
+#### Housings
 The designs for the buoy and receiver housings were created in Autodesk Inventor. All parts were converted into .dxf files and cut from .125" birch plywood using a laser cutting machine. The wooden parts were then assembled using cyanoacrylate glue and painted orange to aid in waterproofing and visibility. 
 
-### Electronics
-The buoy contains an Adafruit Ultimate GPS module, and Arduino nano and a Xbee radio. The GPS signal is decoded by the Arduino and is sent to the receiver via the Xbee radio. 
+##### Buoy Housing Exploded View
+<p align="center">
+  <img src="https://github.com/bill-23/blog/blob/gh-pages/Images/Buoy%20Exploded.jpg?raw=true" alt="Buoy housing exploded view"/>
+</p>
+
+##### Reciever Housing Exploded View
+<p align="center">
+  <img src="https://github.com/bill-23/blog/blob/gh-pages/Images/Receiver%20CAD%20Exploded.png?raw=true" alt="Reciever housing exploded view"/>
+</p>
+
+#### Electronics
+The buoy contains an Adafruit Ultimate GPS module, and Arduino nano and a Xbee radio. The GPS signal is decoded by the Arduino and is sent to the receiver via the Xbee radio.
+
+<p align="center">
+  <img src="https://github.com/bill-23/blog/blob/gh-pages/Images/Buoy%20Schematic.PNG?raw=true" alt="Buot schematic"/>
+</p>
 
 The Receiver circuitry contains a Bluetooth module and a Xbee radio receiver. The incoming decoded GPS signal is sent directly to the users phone via the Bluetooth module. 
+
+<p align="center">
+  <img src="https://github.com/bill-23/blog/blob/gh-pages/Images/Receiver%20Schematic.PNG?raw=true" alt="Reciever schematic"/>
+</p>
 
 Each circuit was powered by a 7.4 v lithium battery, with a 7805 5 volt regulator.
 
