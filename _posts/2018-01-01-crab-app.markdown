@@ -50,13 +50,12 @@ Each circuit was powered by a 7.4 v lithium battery, with a 7805 5 volt regulato
 There were two main pieces of code for this project, the phone Android application and the Arduino code to convert the gps NMEA string into latitude and longitude coordinates.
 
 #### Arduino
-The Arduino code implements the Adafruit_GPS library. The first to do is create the serial connections. Since the GPS and Xbee both require a serial connection and only one is available, a software serial connection is made. 
+The Arduino code [here](https://github.com/bill-23/CrabApp/blob/master/GPS_Works.ino) implements the Adafruit_GPS library. The first to do is create the serial connections. Since the GPS and Xbee both require a serial connection and only one is available, a software serial connection is made. 
 The loop function looks to see if a GPS NMEA string has been received, and if so it parses it into a latitude and longitude to be sent from the buoy to the receiver on the boat via the Xbee.
 
 #### Android
-We start with the layout file:
-A map fragment is added along with a text view which will be used for the timer and a button to reset the timer.
-The timer Runnable is then created which will act as a timer.
+The Android app [here](https://github.com/bill-23/CrabApp/blob/master/timer/app/src/main/java/com/example/timer/MainActivity.java) consists of the layout and the main Java code. For the layout a map fragment is added along with a text view which will be used for the timer and a button to reset the timer.
+For the Java code a timer Runnable is then created which will act as a timer.
 The text view is then made clickable so that it can be used to start and pause the timer. A polling method is used to pause and reset the timer.
 The reset button implemented so that the button must be pressed twice for the timer to reset to prevent accidental resetting.
-The method to receive data from the Bluetooth device reads the data string in and separates it at a given delimiter. Each piece of the string is then parsed as a float to be used for the latitude and longitude.
+The method to receive data from the Bluetooth device reads the data string in and separates it at a given delimiter. Each piece of the string is then parsed as a float to be used for the latitude and longitude and added as a marker on the map.
