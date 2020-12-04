@@ -34,7 +34,6 @@ item_path = Path(item)
 ```
 * Gets the items file type
 ```python
-
 item_type = item_path.suffix.lower()
 ```
 * Chooses the correct directory type to make
@@ -92,5 +91,6 @@ def organize_dir(path):
 			new_file_path = f"{directory}/{item.name}"
 			os.replace(item_path, new_file_path)
 ```
+---
 
 
