@@ -28,7 +28,7 @@ twitter_username: _bill_bassett_
 github_username:  bill-23
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
 plugins:
   - jekyll-feed
 
