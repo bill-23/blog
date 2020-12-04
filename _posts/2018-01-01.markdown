@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "CrabApp"
+date:   2018-01-01 15:00:00 -0700
+categories: android
+---
+### Introduction
+Recreational crabbing is a popular activity among fishermen. According to the 2011 census 33.1 million people aged 16 and up participated in fishing with 1.7 million licensed fishermen in California alone. The popularity of this sport resulted in 41.8 billion dollars spent on fishing in 2011 of which 15.5 million dollars was spent on fishing gear. 
+
+The thrill of pulling up a full crab pot also comes with the threat of pollution. The California Lost Fishing Gear and Recovery Project removed more than 60 tons of commercial and recreational fishing gear and debris from coastal waters from 2006 to 2013. Crab pots can ghost fish, continue to catch sea life, for more than seven years causing significant loss in sea life. With the participation of recreational fishermen, a reduction in the loss of fishing gear is possible while collecting beneficial data to provide to environmental and government agencies.
+
+CrabApp is vital to environmental conservation efforts by providing a user-friendly interface for fisherman to track their gear, resulting in a reduction of debris left in coastal waters and providing data for continued conservation studies. 
+
+### Design
+There are two main parts to CrabApp, the physical buoy housing and the Android application. The housing ataches to a standard 12" moring buoy. 
+
+### Buoy Housing
+The designs for the buoy and receiver housings were created in Autodesk Inventor. All parts were converted into .dxf files and cut from .125" birch plywood using a laser cutting machine. The wooden parts were then assembled using cyanoacrylate glue and painted orange to aid in waterproofing and visibility. 
+
+### Electronics
+The buoy contains an Adafruit Ultimate GPS module, and Arduino nano and a Xbee radio. The GPS signal is decoded by the Arduino and is sent to the receiver via the Xbee radio. 
+
+The Receiver circuitry contains a Bluetooth module and a Xbee radio receiver. The incoming decoded GPS signal is sent directly to the users phone via the Bluetooth module. 
+
+Each circuit was powered by a 7.4 v lithium battery, with a 7805 5 volt regulator.
+
+### Software
+There were two main pieces of code for this project, the phone Android application and the Arduino code to convert the gps NMEA string into latitude and longitude coordinates.
+
+#### Arduino
+The Arduino code implements the Adafruit_GPS library. The first to do is create the serial connections. Since the GPS and Xbee both require a serial connection and only one is available, a software serial connection is made. 
+The loop function looks to see if a GPS NMEA string has been received, and if so it parses it into a latitude and longitude to be sent from the buoy to the receiver on the boat via the Xbee.
+
+#### Android
+We start with the layout file:
+A map fragment is added along with a text view which will be used for the timer and a button to reset the timer.
+The timer Runnable is then created which will act as a timer.
+The text view is then made clickable so that it can be used to start and pause the timer. A polling method is used to pause and reset the timer.
+The reset button implemented so that the button must be pressed twice for the timer to reset to prevent accidental resetting.
+The method to receive data from the Bluetooth device reads the data string in and separates it at a given delimiter. Each piece of the string is then parsed as a float to be used for the latitude and longitude.
