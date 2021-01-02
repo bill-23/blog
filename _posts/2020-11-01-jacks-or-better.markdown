@@ -8,6 +8,7 @@ categories: android
   <img src="https://github.com/bill-23/blog/blob/gh-pages/jacks%20or%20better%20Feature%20Graphic.png?raw=true" alt="Jacks or Better graphic"/>
 </p>
 
-<embed src="https://github.com/bill-23/Jacks-Or-Better-Video-Poker/blob/master/tos.pdf" type="application/pdf">
+<object data="https://github.com/bill-23/Jacks-Or-Better-Video-Poker/blob/master/tos.pdf" type="application/pdf" width="100%"> 
+</object>
 
 
